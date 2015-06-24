@@ -1,0 +1,1081 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlagConsole</name>
+    </assembly>
+    <members>
+        <member name="T:FlagConsole.Controls.Container">
+            <summary>
+            Base class for all containers
+            </summary>
+        </member>
+        <member name="T:FlagConsole.Controls.Control">
+            <summary>
+            Base class for all controls
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.Control.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Controls.Control"/> class.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.Control.Invalidate">
+            <summary>
+            Invalidates the control and causes a redraw.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.Control.Update(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Updates the control if <see cref="P:FlagConsole.Controls.Control.IsVisible"/> is set to true.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="M:FlagConsole.Controls.Control.Draw(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws the control.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="M:FlagConsole.Controls.Control.OnInvalidated(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:FlagConsole.Controls.Control.Invalidated"/> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="E:FlagConsole.Controls.Control.Invalidated">
+            <summary>
+            Occurs when the control requires redrawing.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Controls.Control.AbsoluteLocation">
+            <summary>
+            Gets the absolute location in the console.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Controls.Control.BackgroundColor">
+            <summary>
+            Gets or sets the background color for the control.
+            </summary>
+            <value>
+            The backgound color for the control.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.Control.ForegroundColor">
+            <summary>
+            Gets or sets the foreground color for the control.
+            </summary>
+            <value>
+            The foregound color for the control.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.Control.IsVisible">
+            <summary>
+            Gets or sets a value indicating whether the control is visible.
+            </summary>
+            <value>
+              <c>true</c> if the control is visible; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.Control.Parent">
+            <summary>
+            Gets or sets the parent <see cref="T:FlagConsole.Controls.Container"/> that contains the control.
+            </summary>
+            <value>
+            The parent <see cref="T:FlagConsole.Controls.Container"/> that contains the control.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.Control.RelativeLocation">
+            <summary>
+            Gets or sets the relative location to the parent <see cref="T:FlagConsole.Controls.Container"/>.
+            </summary>
+            <value>
+            The relative location to the parent <see cref="T:FlagConsole.Controls.Container"/>.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.Control.Size">
+            <summary>
+            Gets or sets the size of the control.
+            </summary>
+            <value>
+            The size of the control.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.Control.Top">
+            <summary>
+            Gets the top <see cref="T:FlagConsole.Controls.Container"/>.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.Container.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Controls.Container"/> class.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.Container.Update(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Updates the control if <see cref="P:FlagConsole.Controls.Control.IsVisible"/> is set to true.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="M:FlagConsole.Controls.Container.Draw(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws the control.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.Container.control_Invalidated(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Invalidated event of the control control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:FlagConsole.Controls.Container.controls_CollectionChanged(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Handles the CollectionChanged event of the controls control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="P:FlagConsole.Controls.Container.Controls">
+            <summary>
+            Gets the underlying controls.
+            </summary>
+            <value>
+            The underlying controls.
+            </value>
+        </member>
+        <member name="T:FlagConsole.Controls.IFocusable">
+            <summary>
+            Provides methods for focusable controls
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.IFocusable.Defocus">
+            <summary>
+            Defocuses the control and stopps it's behaviour.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.IFocusable.Focus">
+            <summary>
+            Focuses the control and executes it's behaviour (e.g the selection of a menu or the input of a textfield)
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Controls.IFocusable.IsFocused">
+            <summary>
+            Gets a value indicating whether the control has input focus.
+            </summary>
+            <value>
+            true if the control has input focus; otherwise, false.
+            </value>
+        </member>
+        <member name="T:FlagConsole.Controls.Label">
+            <summary>
+            Represents a label that can show a text
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.Label.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Controls.Label"/> class.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.Label.Draw(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws the control.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="P:FlagConsole.Controls.Label.Text">
+            <summary>
+            Gets or sets the text that is displayed in the label.
+            </summary>
+            <value>
+            The text that is displayed in the label.
+            </value>
+        </member>
+        <member name="T:FlagConsole.Controls.ListControl">
+            <summary>
+            Represents a control that displays a list of items (like a Menu or a ListView)
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.ListControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Controls.ListControl"/> class.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Controls.ListControl.Bullet">
+            <summary>
+            Gets or sets the bullet that is prepended before each item.
+            </summary>
+            <value>
+            The bullet that is prepended before each item..
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.ListControl.DisplayBullets">
+            <summary>
+            Gets or sets a value indicating whether the bullets should be displayed.
+            </summary>
+            <value>
+            true if the bullets should be displayed; otherwise, false.
+            </value>
+        </member>
+        <member name="T:FlagConsole.Controls.ListView`1">
+            <summary>
+            Provides a list view, that displays items in a table with one column
+            </summary>
+            <typeparam name="T">Type of the item that gets displayed</typeparam>
+        </member>
+        <member name="M:FlagConsole.Controls.ListView`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Controls.ListView`1"/> class.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.ListView`1.Draw(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws the control.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="P:FlagConsole.Controls.ListView`1.Items">
+            <summary>
+            Gets the items.
+            </summary>
+        </member>
+        <member name="T:FlagConsole.Controls.Menu`1">
+            <summary>
+            Provides a text-based menu in the console, where the user can select an item
+            </summary>
+            <typeparam name="T">Type of the item that the user can select</typeparam>
+        </member>
+        <member name="M:FlagConsole.Controls.Menu`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Controls.Menu`1"/> class.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.Menu`1.Defocus">
+            <summary>
+            Defocuses the control and stopps it's behaviour.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.Menu`1.Focus">
+            <summary>
+            Focuses the control and executes it's behaviour (e.g the selection of a menu or the input of a textfield)
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.Menu`1.Draw(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws the control.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="M:FlagConsole.Controls.Menu`1.OnItemChosen(FlagConsole.Controls.MenuEventArgs{`0})">
+            <summary>
+            Raises the <see cref="E:FlagConsole.Controls.Menu`1.ItemChosen"/> event.
+            </summary>
+            <param name="e">The <see cref="T:FlagConsole.Controls.MenuEventArgs`1"/> instance containing the event data.</param>
+        </member>
+        <member name="M:FlagConsole.Controls.Menu`1.OnSelectionChanged(FlagConsole.Controls.MenuEventArgs{`0})">
+            <summary>
+            Raises the <see cref="E:FlagConsole.Controls.Menu`1.SelectionChanged"/> event.
+            </summary>
+            <param name="e">The <see cref="T:FlagConsole.Controls.MenuEventArgs`1"/> instance containing the event data.</param>
+        </member>
+        <member name="M:FlagConsole.Controls.Menu`1.ScanInput">
+            <summary>
+            Scans the input (after the item got focused).
+            </summary>
+        </member>
+        <member name="E:FlagConsole.Controls.Menu`1.ItemChosen">
+            <summary>
+            Occurs when a item has been chosen.
+            </summary>
+        </member>
+        <member name="E:FlagConsole.Controls.Menu`1.SelectionChanged">
+            <summary>
+            Occurs when the current selected item has changed.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Controls.Menu`1.DownKeys">
+            <summary>
+            Gets a collection of <see cref="T:System.ConsoleKey"/>s that can be used to scroll downward in the menu.
+            </summary>
+            <value>
+            A collection of <see cref="T:System.ConsoleKey"/>s that can be used to scroll downward in the menu.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.Menu`1.IsFocused">
+            <summary>
+            Gets a value indicating whether the control has input focus.
+            </summary>
+            <value>
+            true if the control has input focus; otherwise, false.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.Menu`1.Items">
+            <summary>
+            Gets the items.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Controls.Menu`1.SelectedIndex">
+            <summary>
+            Gets or sets the index of the selected.
+            </summary>
+            <value>
+            The index of the selected.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.Menu`1.SelectedItem">
+            <summary>
+            Gets the selected item.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Controls.Menu`1.SelectionBackgroundColor">
+            <summary>
+            Gets or sets the background color of the current selected item.
+            </summary>
+            <value>
+            The background color of the current selected item.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.Menu`1.SelectionForegroundColor">
+            <summary>
+            Gets or sets the foreground color of the current selected item.
+            </summary>
+            <value>
+            The foreground color of the current selected item.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.Menu`1.UpKeys">
+            <summary>
+            Gets a collection of <see cref="T:System.ConsoleKey"/>s that can be used to scroll upward in the menu.
+            </summary>
+            <value>
+            A collection of <see cref="T:System.ConsoleKey"/>s that can be used to scroll upward in the menu.
+            </value>
+        </member>
+        <member name="T:FlagConsole.Controls.MenuEventArgs`1">
+            <summary>
+            Provides data for the events that are raised by the <see cref="T:FlagConsole.Controls.Menu`1"/> class.
+            </summary>
+            <typeparam name="T">The type of the MenuItem.</typeparam>
+        </member>
+        <member name="M:FlagConsole.Controls.MenuEventArgs`1.#ctor(FlagConsole.Controls.MenuItem{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Controls.MenuEventArgs`1"/> class.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="P:FlagConsole.Controls.MenuEventArgs`1.Item">
+            <summary>
+            Gets the item that was affected.
+            </summary>
+            <value>
+            The item that was affected.
+            </value>
+        </member>
+        <member name="T:FlagConsole.Controls.MenuItem`1">
+            <summary>
+            An menu item for selection
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.MenuItem`1.#ctor(System.String,`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Controls.MenuItem`1"/> class.
+            </summary>
+            <param name="name">The name of the item.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:FlagConsole.Controls.MenuItem`1.Name">
+            <summary>
+            Gets or sets the name that is displayed in the menu.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Controls.MenuItem`1.Value">
+            <summary>
+            The value of the item, returned when the user selects an item.
+            </summary>
+        </member>
+        <member name="T:FlagConsole.Controls.Panel">
+            <summary>
+            Provides a <see cref="T:FlagConsole.Controls.Panel"/> that can contain controls
+            </summary>
+        </member>
+        <member name="T:FlagConsole.Controls.PasswordBox">
+            <summary>
+            Provides a TextBox control, where the user can type passwords.
+            </summary>
+        </member>
+        <member name="T:FlagConsole.Controls.TextBox">
+            <summary>
+            Provides a control, where the user can type text.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.TextBox.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Controls.TextBox"/> class.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.TextBox.Defocus">
+            <summary>
+            Defocuses the control and stops it's behaviour.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.TextBox.Focus">
+            <summary>
+            Focuses the control and executes it's behaviour (e.g the selection of a menu or the input of a textfield)
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.TextBox.Draw(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws the control.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="M:FlagConsole.Controls.TextBox.OnTextChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:FlagConsole.Controls.TextBox.TextChanged"/> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:FlagConsole.Controls.TextBox.OnTextSubmitted(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:FlagConsole.Controls.TextBox.TextSubmitted"/> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:FlagConsole.Controls.TextBox.ScanInput">
+            <summary>
+            Scans the input.
+            </summary>
+        </member>
+        <member name="E:FlagConsole.Controls.TextBox.TextChanged">
+            <summary>
+            Occurs when the <see cref="P:FlagConsole.Controls.TextBox.Text"/> property value changes.
+            </summary>
+        </member>
+        <member name="E:FlagConsole.Controls.TextBox.TextSubmitted">
+            <summary>
+            Occurs when the user pressed the enter key.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Controls.TextBox.IsFocused">
+            <summary>
+            Gets a value indicating whether the control has input focus.
+            </summary>
+            <value>
+            true if the control has input focus; otherwise, false.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.TextBox.MaxLength">
+            <summary>
+            Gets or sets the maximum number of characters the user can type into the <see cref="T:FlagConsole.Controls.TextBox"/>.
+            </summary>
+            <value>
+            The maximum number of characters the user can type into the <see cref="T:FlagConsole.Controls.TextBox"/>.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.TextBox.Text">
+            <summary>
+            Gets or sets the current text of the <see cref="T:FlagConsole.Controls.TextBox"/>.
+            </summary>
+            <value>
+            The current text of the <see cref="T:FlagConsole.Controls.TextBox"/>.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.PasswordBox.Password">
+            <summary>
+            Gets the current password of the <see cref="T:FlagConsole.Controls.PasswordBox"/>.
+            </summary>
+            <value>
+            The current password of the <see cref="T:FlagConsole.Controls.PasswordBox"/>.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.PasswordBox.PasswordChar">
+            <summary>
+            Gets or sets the masking character for the <see cref="T:FlagConsole.Controls.PasswordBox"/>.
+            </summary>
+            <value>
+            A masking character to echo when the user enters text into the <see cref="T:FlagConsole.Controls.PasswordBox"/>.
+            The default value is a star character (*).
+            </value>
+        </member>
+        <member name="T:FlagConsole.Controls.Screen">
+            <summary>
+            Top container, equals the <see cref="!:System.Windows.Forms.Form"/> class. <para/>
+            Every control and container should be placed here
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.Screen.Update(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Updates the control if <see cref="P:FlagConsole.Controls.Control.IsVisible"/> is set to true.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="M:FlagConsole.Controls.Screen.OnInvalidated(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:FlagConsole.Controls.Control.Invalidated"/> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="P:FlagConsole.Controls.Screen.AbsoluteLocation">
+            <summary>
+            Gets the absolute position to the console.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Controls.Screen.Top">
+            <summary>
+            Gets the top conainer (the screen).
+            </summary>
+        </member>
+        <member name="T:FlagConsole.Controls.TextField">
+            <summary>
+            Provides a text field where the user can do an input
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.TextField.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Controls.TextField"/> class.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.TextField.Defocus">
+            <summary>
+            Defocuses the control and stopps it's behaviour.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.TextField.Focus">
+            <summary>
+            Focuses the control and executes it's behaviour (e.g the selection of a menu or the input of a textfield)
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.TextField.Draw(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws the control.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Controls.TextField.OnTextEntered(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:FlagConsole.Controls.TextField.TextEntered"/> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:FlagConsole.Controls.TextField.ScanInput">
+            <summary>
+            Scans the input.
+            </summary>
+        </member>
+        <member name="E:FlagConsole.Controls.TextField.TextEntered">
+            <summary>
+            Occurs when the input has been entered.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Controls.TextField.IsFocused">
+            <summary>
+            Gets a value indicating whether this <see cref="T:FlagConsole.Controls.IFocusable"/> is focused.
+            </summary>
+            <value>
+            true if focused; otherwise, false.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.TextField.Length">
+            <summary>
+            Gets or sets the length of the text field.
+            </summary>
+            <value>
+            The length of the text field.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Controls.TextField.Text">
+            <summary>
+            Gets the input.
+            </summary>
+            <value>
+            The input.
+            </value>
+        </member>
+        <member name="T:FlagConsole.Drawing.Shape">
+            <summary>
+            Base class for rectangles, lines, etc...
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Drawing.Shape.#ctor(System.Char)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Drawing.Shape"/> class.
+            </summary>
+            <param name="token">The token of whih the shape consists.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.Shape.Draw(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws the shape.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="P:FlagConsole.Drawing.Shape.Token">
+            <summary>
+            Gets or sets the token of which the shape consists.
+            </summary>
+            <value>
+            The token of which the shape consists.
+            </value>
+        </member>
+        <member name="M:FlagConsole.Drawing.Ellipse.#ctor(FlagConsole.Drawing.Coordinate,System.Int32,System.Int32,System.Char)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Drawing.Ellipse"/> class.
+            </summary>
+            <param name="midPoint">The mid point.</param>
+            <param name="a">The radius.</param>
+            <param name="b">The b.</param>
+            <param name="token">The token.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.Ellipse.Draw(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws the ellipse.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="P:FlagConsole.Drawing.Ellipse.A">
+            <summary>
+            Gets or sets the size on the x-axis.
+            </summary>
+            <value>
+            The size on the y-axis.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Drawing.Ellipse.B">
+            <summary>
+            Gets or sets the size on the y-axis.
+            </summary>
+            <value>
+            The size on the y-axis.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Drawing.Ellipse.Centre">
+            <summary>
+            Gets or sets the mid point.
+            </summary>
+            <value>
+            The mid point.
+            </value>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.#ctor(FlagConsole.Drawing.Size)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> class.
+            </summary>
+            <param name="size">The size of the buffer.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.Clear">
+            <summary>
+            Clears the graphic buffer and resets the drawing colors.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.DrawEllipse(System.Char,FlagConsole.Drawing.Coordinate,System.Int32,System.Int32)">
+            <summary>
+            Draws a ellipse.
+            </summary>
+            <param name="token">The token.</param>
+            <param name="midPoint">The mid point.</param>
+            <param name="a">A.</param>
+            <param name="b">The b.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.DrawLine(System.String,FlagConsole.Drawing.Coordinate)">
+            <summary>
+            Draws the specified line to the specified location.
+            </summary>
+            <param name="line">The line to draw.</param>
+            <param name="location">The location where the line shall be drawn.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.DrawLine(System.Char,FlagConsole.Drawing.Coordinate,FlagConsole.Drawing.Coordinate)">
+            <summary>
+            Draws a line.
+            </summary>
+            <param name="token">The token.</param>
+            <param name="startPoint">The start point.</param>
+            <param name="endPoint">The end point.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.DrawLine(System.Char[],FlagConsole.Drawing.Coordinate)">
+            <summary>
+            Draws the specified line to the specified location.
+            </summary>
+            <param name="line">The line to draw.</param>
+            <param name="location">The location where the line shall be drawn.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.DrawPixel(System.Char,FlagConsole.Drawing.Coordinate)">
+            <summary>
+            Draws the specified pixel at the specified location in the buffer.
+            </summary>
+            <param name="pixel">The pixel to draw.</param>
+            <param name="location">The location where the pixel shall be drawn.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.DrawRectangle(System.Char,FlagConsole.Drawing.Coordinate,FlagConsole.Drawing.Size,System.Boolean)">
+            <summary>
+            Draws a rectangle.
+            </summary>
+            <param name="token">The token.</param>
+            <param name="location">The location.</param>
+            <param name="size">The size.</param>
+            <param name="isFilled">if set to true [is filled].</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.DrawToScreen(FlagConsole.Drawing.Coordinate)">
+            <summary>
+            Draws the buffer at the specified location to the screen.
+            </summary>
+            <param name="location">The location.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.Merge(FlagConsole.Drawing.GraphicBuffer,FlagConsole.Drawing.Coordinate)">
+            <summary>
+            Merges the specified buffer at the specified location into this buffer.
+            </summary>
+            <param name="otherBuffer">The buffer, that should be merged into this instance.</param>
+            <param name="location">The location.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.ResetColor">
+            <summary>
+            Sets the foreground and background drawing colors to their default values.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.IsInBounds(FlagConsole.Drawing.Coordinate)">
+            <summary>
+            Determines whether the specified point is in the bounds of the buffer.
+            </summary>
+            <param name="point">The point.</param>
+            <returns>
+            true if the specified point is in the bounds of the buffer; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:FlagConsole.Drawing.GraphicBuffer.TraversePixels(System.Action{System.Int32,System.Int32})">
+            <summary>
+            Calls the specified action for each pixel.
+            </summary>
+            <param name="action">The action.</param>
+        </member>
+        <member name="P:FlagConsole.Drawing.GraphicBuffer.BackgroundDrawingColor">
+            <summary>
+            Gets or sets the background drawing color.
+            </summary>
+            <value>
+            The background drawing color.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Drawing.GraphicBuffer.ForegroundDrawingColor">
+            <summary>
+            Gets or sets the foreground drawing color.
+            </summary>
+            <value>
+            The foreground drawing color.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Drawing.GraphicBuffer.Size">
+            <summary>
+            Gets the size of the buffer.
+            </summary>
+        </member>
+        <member name="T:FlagConsole.Drawing.Line">
+            <summary>
+            Base class for lines (horizontal line and vertical line)
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Drawing.Line.#ctor(FlagConsole.Drawing.Coordinate,FlagConsole.Drawing.Coordinate,System.Char)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Drawing.Line"/> class.
+            </summary>
+            <param name="startPoint">The start point.</param>
+            <param name="endPoint">The end point.</param>
+            <param name="token">The token of which the line consists.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.Line.Draw(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws the line.
+            </summary>
+            <param name="buffer">The graphic buffer.</param>
+        </member>
+        <member name="P:FlagConsole.Drawing.Line.EndPoint">
+            <summary>
+            Gets or sets the end point.
+            </summary>
+            <value>
+            The end point.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Drawing.Line.StartPoint">
+            <summary>
+            Gets or sets the start point.
+            </summary>
+            <value>
+            The start point.
+            </value>
+        </member>
+        <member name="M:FlagConsole.Drawing.Pixel.#ctor(System.Char,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Drawing.Pixel"/> class.
+            </summary>
+            <param name="token">The token.</param>
+            <param name="foregroundColor">The foreground color.</param>
+            <param name="backgroundColor">The background color.</param>
+        </member>
+        <member name="P:FlagConsole.Drawing.Pixel.BackgroundColor">
+            <summary>
+            Gets the background color.
+            </summary>
+            <value>
+            The background color.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Drawing.Pixel.ForegroundColor">
+            <summary>
+            Gets the foreground color.
+            </summary>
+            <value>
+            The foreground color.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Drawing.Pixel.Token">
+            <summary>
+            Gets the token.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Drawing.Rectangle.#ctor(FlagConsole.Drawing.Coordinate,FlagConsole.Drawing.Size,System.Char,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Drawing.Rectangle"/> class.
+            </summary>
+            <param name="location">The location.</param>
+            <param name="size">The size.</param>
+            <param name="token">The token.</param>
+            <param name="filled">if set to <c>true</c>, the rectangle is filled.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.Rectangle.Draw(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws the shape.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.Rectangle.DrawFilledRectangle(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws a filled rectangle.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.Rectangle.DrawUnfilledRectangle(FlagConsole.Drawing.GraphicBuffer)">
+            <summary>
+            Draws a unfilled rectangle.
+            </summary>
+            <param name="buffer">The <see cref="T:FlagConsole.Drawing.GraphicBuffer"/> to draw on.</param>
+        </member>
+        <member name="P:FlagConsole.Drawing.Rectangle.Bottom">
+            <summary>
+            Gets the y-coordinate that is the sum of the Y and Height property values of this Rectangle structure.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Drawing.Rectangle.IsFilled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:FlagConsole.Drawing.Rectangle"/> is filled.
+            </summary>
+            <value>
+              <c>true</c> if filled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Drawing.Rectangle.Left">
+            <summary>
+            Gets the x-coordinate of the left edge of this Rectangle structure.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Drawing.Rectangle.Location">
+            <summary>
+            Gets or sets the location.
+            </summary>
+            <value>
+            The location.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Drawing.Rectangle.Right">
+            <summary>
+            Gets the x-coordinate that is the sum of X and Size.Width property values of this Rectangle structure.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Drawing.Rectangle.Size">
+            <summary>
+            Gets or sets the size.
+            </summary>
+            <value>
+            The size.
+            </value>
+        </member>
+        <member name="P:FlagConsole.Drawing.Rectangle.Top">
+            <summary>
+            Gets the y-coordinate of the top edge of this Rectangle structure.
+            </summary>
+        </member>
+        <member name="T:FlagConsole.Drawing.Coordinate">
+            <summary>
+            Provides a immutable Position, which encapsulates a x and y coordinate
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Drawing.Coordinate.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Drawing.Coordinate"/> class.
+            </summary>
+            <param name="x">The x coordinate</param>
+            <param name="y">The y coordinate</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.Coordinate.op_Inequality(FlagConsole.Drawing.Coordinate,FlagConsole.Drawing.Coordinate)">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="positionA">The position A.</param>
+            <param name="positionB">The position B.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:FlagConsole.Drawing.Coordinate.op_Addition(FlagConsole.Drawing.Coordinate,FlagConsole.Drawing.Coordinate)">
+            <summary>
+            Implements the operator +.
+            </summary>
+            <param name="positionA">The position A.</param>
+            <param name="positionB">The position B.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:FlagConsole.Drawing.Coordinate.op_Equality(FlagConsole.Drawing.Coordinate,FlagConsole.Drawing.Coordinate)">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="positionA">The position A.</param>
+            <param name="positionB">The position B.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:FlagConsole.Drawing.Coordinate.Add(FlagConsole.Drawing.Coordinate)">
+            <summary>
+            Adds the specified position.
+            </summary>
+            <param name="position">The position.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlagConsole.Drawing.Coordinate.Clone">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <returns>
+            A new object that is a copy of this instance.
+            </returns>
+        </member>
+        <member name="M:FlagConsole.Drawing.Coordinate.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with this instance.</param>
+            <returns>
+            	<c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+            <exception cref="T:System.NullReferenceException">
+            The <paramref name="obj"/> parameter is null.
+            </exception>
+        </member>
+        <member name="M:FlagConsole.Drawing.Coordinate.Equals(FlagConsole.Drawing.Coordinate)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:FlagConsole.Drawing.Coordinate.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
+        <member name="P:FlagConsole.Drawing.Coordinate.Origin">
+            <summary>
+            Gets a coordinate, which represents the origin of a coordinate system (x = 0, y = 0).
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Drawing.Coordinate.X">
+            <summary>
+            Gets the x coordinate
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Drawing.Coordinate.Y">
+            <summary>
+            Gets the y coordinate
+            </summary>
+        </member>
+        <member name="T:FlagConsole.Drawing.Size">
+            <summary>
+            Provides an immutable size, which encapsulates a width and a height
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Drawing.Size.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Drawing.Size"/> class.
+            </summary>
+        </member>
+        <member name="M:FlagConsole.Drawing.Size.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlagConsole.Drawing.Size"/> class.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+        </member>
+        <member name="M:FlagConsole.Drawing.Size.op_Inequality(FlagConsole.Drawing.Size,FlagConsole.Drawing.Size)">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="sizeA">The size A.</param>
+            <param name="sizeB">The size B.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:FlagConsole.Drawing.Size.op_Equality(FlagConsole.Drawing.Size,FlagConsole.Drawing.Size)">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="sizeA">The position A.</param>
+            <param name="sizeB">The position B.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:FlagConsole.Drawing.Size.Clone">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <returns>
+            A new object that is a copy of this instance.
+            </returns>
+        </member>
+        <member name="M:FlagConsole.Drawing.Size.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with this instance.</param>
+            <returns>
+            	<c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+            <exception cref="T:System.NullReferenceException">
+            The <paramref name="obj"/> parameter is null.
+            </exception>
+        </member>
+        <member name="M:FlagConsole.Drawing.Size.Equals(FlagConsole.Drawing.Size)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:FlagConsole.Drawing.Size.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
+        <member name="P:FlagConsole.Drawing.Size.Height">
+            <summary>
+            Gets the height.
+            </summary>
+        </member>
+        <member name="P:FlagConsole.Drawing.Size.Width">
+            <summary>
+            Gets the width.
+            </summary>
+        </member>
+    </members>
+</doc>

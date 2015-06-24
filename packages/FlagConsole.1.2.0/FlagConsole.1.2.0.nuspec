@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>FlagConsole</id>
+    <version>1.2.0</version>
+    <title>FlagConsole</title>
+    <authors>Dennis Daume</authors>
+    <owners>Dennis Daume</owners>
+    <licenseUrl>http://opensource.org/licenses/mit-license</licenseUrl>
+    <projectUrl>http://github.com/flagbug/FlagConsole</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>FlagConsole is a library for .NET, written in C#, which helps to build text-based console application interfaces. It provides controls like panel, textfield, list view, menu, rectangle, line, and label.</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>flagconsole console text-based interface</tags>
+  </metadata>
+</package>
